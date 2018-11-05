@@ -11,29 +11,14 @@
  */
 package br.ufmg.reuso.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.Border;
 import javax.swing.text.SimpleAttributeSet;
@@ -82,6 +67,7 @@ public class ScreenTabuleiro extends JDialog {
 	Jogo jogo = null;
 	Mesa board = null;
 	Carta cartaAtiva = null;
+	Long inicioRodada = new Date().getTime();
 
 	// Variáveis utilizadas para posicionamento dos paineis.
 	private int x, y, width, height, yInc, xInc;
@@ -275,33 +261,78 @@ public class ScreenTabuleiro extends JDialog {
 
 		jpanel.setBackground(colorBack);		
 		
-		jpanel.setLayout(null);
+		jpanel.setLayout(new BorderLayout());
 		
 		String messager = "Situação do jogo\n";
 			
-		//Font font = new Font("Default", Font.PLAIN, 25);
+		Font font = new Font("Default", Font.PLAIN, 25);
 		
 		if (jogador != null){
 			//jogador.getTabuleiro().getMesas()[1].getModuloIntegrado()
 			
 		}
-		
+
+		JTextPane paneTimer = new JTextPane();
+		paneTimer.setText("05:00");
+		paneTimer.setInheritsPopupMenu(true);
+		paneTimer.setAlignmentX(CENTER_ALIGNMENT);
+		paneTimer.setBorder(BorderFactory.createLineBorder(Color.white));
+		paneTimer.setEditable(false);
+		paneTimer.setContentType("text/html");
+		paneTimer.setEnabled(false);
+		paneTimer.setFont(font);
+
+		jpanel.add(paneTimer, BorderLayout.NORTH);
+		Timer timer = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (jogador == null) {
+					return;
+				}
+
+				Long horaAgora = new Date().getTime();
+				Long diferencaSegundos = (horaAgora - inicioRodada) / 1000;
+				Long tempoRestante = 5 * 60 - diferencaSegundos;
+
+				Long minutes = (tempoRestante % 3600) / 60;
+				Long seconds = tempoRestante % 60;
+
+				String timeString = String.format("%02d:%02d", minutes, seconds);
+				if (tempoRestante <= 5) {
+					paneTimer.setDisabledTextColor(Color.red);
+					timeString = String.format("<b>%02d:%02d</b>", minutes, seconds);
+				} else {
+					paneTimer.setDisabledTextColor(Color.black);
+				}
+
+				if (tempoRestante <= 0) {
+					setVisible(false);
+				}
+
+				paneTimer.setText(timeString);
+			}
+		});
+
+		timer.setInitialDelay(0);
+		timer.start();
+
 		JTextPane paneDesc = new JTextPane();
-		SimpleAttributeSet bSet = new SimpleAttributeSet();		
+		SimpleAttributeSet bSet = new SimpleAttributeSet();
 		StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_JUSTIFIED);
 		StyledDocument doc = paneDesc.getStyledDocument();
-		doc.setParagraphAttributes(0, doc.getLength(), bSet, false);		
-		paneDesc.setText(messager);		
+		doc.setParagraphAttributes(0, doc.getLength(), bSet, false);
+		paneDesc.setText(messager);
 		paneDesc.setInheritsPopupMenu(true);
 		paneDesc.setAlignmentX(CENTER_ALIGNMENT);
 		//paneDesc.setFont(font);
 		paneDesc.setBorder(BorderFactory.createLineBorder(Color.white));
-		paneDesc.setEditable(false);		
-		paneDesc.setEnabled(false);		
-		JScrollPane sliderPaneDesc = new JScrollPane(paneDesc);		
+		paneDesc.setEditable(false);
+		paneDesc.setEnabled(false);
+		JScrollPane sliderPaneDesc = new JScrollPane(paneDesc);
 		sliderPaneDesc.setViewportView(paneDesc);
-		sliderPaneDesc.setBounds(0,0, myDim.width, 90*myDim.height/100);				
-		jpanel.add(sliderPaneDesc);
+		sliderPaneDesc.setBounds(0,0, myDim.width, 90*myDim.height/100);
+		jpanel.add(sliderPaneDesc, BorderLayout.CENTER);
+
 		return jpanel;
 	}
 
@@ -992,6 +1023,8 @@ public class ScreenTabuleiro extends JDialog {
 	protected void refresh() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				inicioRodada = new Date().getTime();
+
 				panelTabuleiro = getPanelBase();
 				panelCartas.revalidate();
 				panelCartas.repaint();
