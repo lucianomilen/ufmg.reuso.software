@@ -213,7 +213,7 @@ public class ScreenIntegrateModule extends JDialog implements ActionListener {
 				modules = new String[projeto.getModulos().length];
 
 				for (int i = 0; i < projeto.getModulos().length; i++) {
-					modules[i] = new String(Integer.toString(i + 1) + "é -   ");
+					modules[i] = Integer.toString(i + 1) + "é -   ";
 
 					if (projeto.getModulos()[i].getRequisitos() > 0) {
 						modules[i] += (Integer.toString(projeto.getModulos()[i]
@@ -270,7 +270,7 @@ public class ScreenIntegrateModule extends JDialog implements ActionListener {
 		 */		
 		JPanel getPanelArtefacts() {
 
-			JPanel panelBoard = new myPanel();
+			JPanel panelBoard = new MyPanel();
 			panelBoard.setBorder(null);
 			panelBoard.setLayout(null);			
 		
@@ -394,7 +394,7 @@ public class ScreenIntegrateModule extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand() == "OK") {			
+		if ("OK".equals(e.getActionCommand())) {			
 			
 			for( int i = 0; i < 10; i++){
 				for( int j = 0; j < 10; j++){
@@ -647,7 +647,7 @@ public class ScreenIntegrateModule extends JDialog implements ActionListener {
 	}
 	
 	
-	private class myPanel extends JPanel{
+	private class MyPanel extends JPanel{
 		private static final long serialVersionUID = 1L;
 
 		//método implementado de JPanel

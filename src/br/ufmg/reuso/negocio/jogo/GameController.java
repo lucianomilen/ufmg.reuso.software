@@ -25,7 +25,7 @@ import br.ufmg.reuso.ui.ScreenInteraction;
  */
 public class GameController implements GameInteraction
 {
-	private static GameController GameController;
+	private static GameController gameController;
 	public static final int ARTEFATOS_BONS = 0;
 	public static final int ARTEFATOS_RUINS = 1;
 	public static final int ARTEFATOS_SELECIONADO = 0;
@@ -38,9 +38,9 @@ public class GameController implements GameInteraction
 	
 	public static GameController getGameController()
 	{
-		if(GameController==null)
-			GameController = new GameController();
-		return GameController;
+		if(gameController==null)
+			gameController = new GameController();
+		return gameController;
 	}
 	
 	 @Override

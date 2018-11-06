@@ -103,10 +103,11 @@ public final class Jogo {
 	}
 
 	public static Jogo getJogo() {
-		if (jogo == null) {
-			System.out.println("criando jogo");
-			jogo = new Jogo();
-		}
+		if (jogo != null) {
+		} else {
+                    System.out.println("criando jogo");
+                    jogo = new Jogo();
+            }
 		return jogo;
 	}
 
@@ -514,12 +515,12 @@ public final class Jogo {
 			jogador.retirarCarta(cartasRetiradas[i]);
 			baralhoCartas[BARALHO_AUXILIAR].recolherCarta(cartasRetiradas[i]);
 		}
-		System.out.printf("\nMetodo retirarCarta\n"); // TODO so pra teste
+		System.out.printf("%nMetodo retirarCarta%n"); // TODO so pra teste
 		jogador.mostrarCartaMao();
 		/*************/
 		// TODO so pra teste -> mostra carta restante do jogador
 
-		System.out.printf("\nbaralho auxiliar:\n"); // TODO teste para ver
+		System.out.printf("%nbaralho auxiliar:%n"); // TODO teste para ver
 													// baralho auxiliar
 													// funiconando
 		// baralhoCartas[BARALHO_AUXILIAR].mostrarBaralho(); //TODO teste para
@@ -542,7 +543,7 @@ public final class Jogo {
 			/** se pode demitir engenheiro */
 			baralhoCartas[BARALHO_AUXILIAR].recolherCarta(engenheiroDemitido);
 
-		System.out.printf("engenheiro ainda contratados, demitidos nao consta na lista:\n");// TODO
+		System.out.printf("engenheiro ainda contratados, demitidos nao consta na lista:%n");// TODO
 																							// teste
 		mostrarCartasDasMesasDoTabuleiro(jogador);
 
@@ -562,7 +563,7 @@ public final class Jogo {
 				continue; // TODO teste
 			else // TODO TESTE
 			{ // TODO teste
-				System.out.printf("engenheiros contratados:\n");// TODO teste
+				System.out.printf("engenheiros contratados:%n");// TODO teste
 				jogador.getTabuleiro().getMesas()[i].getCartaMesa().mostrarCarta(); // utilizado
 																					// para
 																					// mostrar
@@ -606,7 +607,7 @@ public final class Jogo {
 			return jogador;
 		} else // ha pedido valido
 		{
-			System.out.printf("tem pedido valido\n");
+			System.out.printf("tem pedido valido%n");
 
 			int numeroArtefatoBons = pedido[Mesa.ARTEFATOS_BONS].somatorioModulo();
 			int numeroArtefatosRuins = pedido[Mesa.ARTEFATOS_RUINS].somatorioModulo();
@@ -684,7 +685,7 @@ public final class Jogo {
 			return jogador;
 		} else // TODO ha pedido valido
 		{
-			System.out.printf("tem pedido valido\n");
+			System.out.printf("tem pedido valido%n");
 
 			int numeroArtefatoBons = pedido[Mesa.ARTEFATOS_BONS].somatorioModulo();
 			int numeroArtefatosRuins = pedido[Mesa.ARTEFATOS_RUINS].somatorioModulo();
@@ -762,7 +763,7 @@ public final class Jogo {
 			return jogador;
 		} else // ha pedido valido
 		{
-			System.out.printf("tem pedido valido\n");
+			System.out.printf("tem pedido valido%n");
 
 			int numeroArtefatoBons = pedido[Mesa.ARTEFATOS_BONS].somatorioModulo();
 			int numeroArtefatosRuins = pedido[Mesa.ARTEFATOS_RUINS].somatorioModulo();
@@ -1069,8 +1070,7 @@ public final class Jogo {
 
 	//#ifdef ConceptCard
 	public Jogador usarConceito(Jogador jogador, CartaBonificacao cartaUtilizada) {
-		switch (cartaUtilizada
-				.getTipoPrimeiroEfeito()) /**
+		switch (cartaUtilizada.getTipoPrimeiroEfeito()) /**
 											 * insere PRIMEIRO efeito no
 											 * tabuleiro do jogador
 											 */
@@ -1287,8 +1287,8 @@ public final class Jogo {
 			jogador.getTabuleiro().setEfeitoProblemaArtefatoRequisitosNeutralizado(true);
 			break;
 		}
-		// default: /**nao havera essa opcao, mas a colocamos por seguranca*/
-		// break;
+		default: /**nao havera essa opcao, mas a colocamos por seguranca*/
+		break;
 		}
 
 		switch (cartaUtilizada
@@ -1513,8 +1513,8 @@ public final class Jogo {
 			jogador.getTabuleiro().setEfeitoProblemaArtefatoRequisitosNeutralizado(true);
 			break;
 		}
-		// /default: /**nao havera essa opcao, mas a colocamos por seguranca*/
-		// break;
+		 default: /**nao havera essa opcao, mas a colocamos por seguranca*/
+		 break;
 		}
 
 		Carta[] carta = new Carta[1];

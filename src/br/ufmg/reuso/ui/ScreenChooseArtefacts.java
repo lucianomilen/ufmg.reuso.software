@@ -406,7 +406,7 @@ public class ScreenChooseArtefacts extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand() == "OK") {
+		if ("OK".equals(e.getActionCommand())) {
 			getReturn();
 			int soma = Integer.parseInt(labelTotal.getText());
 
@@ -456,15 +456,15 @@ public class ScreenChooseArtefacts extends JDialog implements ActionListener {
 			text = bom.next();
 			value = ( returnOk? ((Integer) text.getSelectedItem()).intValue(): 0 );
 
-			if (text.getName() == "Requisitos") {
+			if ("Requisitos".equals(text.getName())) {
 				pedidoArtefatos[bons].setRequisitos(value);
-			} else if (text.getName() == "Desenhos") {
+			} else if ("Desenhos".equals(text.getName())) {
 				pedidoArtefatos[bons].setDesenhos(value);
-			} else if (text.getName() == "Código") {
+			} else if ("Código".equals(text.getName())) {
 				pedidoArtefatos[bons].setCodigos(value);
-			} else if (text.getName() == "Rastros") {
+			} else if ("Rastros".equals(text.getName())) {
 				pedidoArtefatos[bons].setRastros(value);
-			} else if (text.getName() == "Ajudas") {
+			} else if ("Ajudas".equals(text.getName())) {
 				pedidoArtefatos[bons]
 						.setAjudas(value);
 			}
@@ -476,19 +476,19 @@ public class ScreenChooseArtefacts extends JDialog implements ActionListener {
 			text = ruim.next();
 			value = ( returnOk? ((Integer) text.getSelectedItem()).intValue(): 0 );
 			
-			if (text.getName() == "Requisitos") {
+			if ("Requisitos".equals(text.getName())) {
 				pedidoArtefatos[ruins].setRequisitos(value);
 
-			} else if (text.getName() == "Desenhos") {
+			} else if ("Desenhos".equals(text.getName())) {
 				pedidoArtefatos[ruins].setDesenhos(value);
 
-			} else if (text.getName() == "Código") {
+			} else if ("Código".equals(text.getName())) {
 				pedidoArtefatos[ruins].setCodigos(value);
 
-			} else if (text.getName() == "Rastros") {
+			} else if ("Rastros".equals(text.getName())) {
 				pedidoArtefatos[ruins].setRastros(value);
 
-			} else if (text.getName() == "Ajudas") {
+			} else if ("Ajudas".equals(text.getName())) {
 				pedidoArtefatos[ruins].setAjudas(value);
 
 			}

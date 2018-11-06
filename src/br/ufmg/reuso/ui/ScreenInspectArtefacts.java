@@ -328,7 +328,7 @@ public class ScreenInspectArtefacts extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand() == "OK") {
+		if ("OK".equals(e.getActionCommand())) {
 			getReturn();
 			int soma = Integer.parseInt(labelTotal.getText());
 
@@ -373,19 +373,19 @@ public class ScreenInspectArtefacts extends JDialog implements ActionListener {
 
 			text = bom.next();
 
-			if (text.getName() == "Requisitos") {
+			if ("Requisitos".equals(text.getName())) {
 				pedidoArtefatos[bons].setRequisitos(((Integer) text
 						.getSelectedItem()).intValue());
-			} else if (text.getName() == "Desenhos") {
+			} else if ("Desenhos".equals(text.getName())) {
 				pedidoArtefatos[bons].setDesenhos(((Integer) text
 						.getSelectedItem()).intValue());
-			} else if (text.getName() == "Código") {
+			} else if ("Código".equals(text.getName())) {
 				pedidoArtefatos[bons].setCodigos(((Integer) text
 						.getSelectedItem()).intValue());
-			} else if (text.getName() == "Rastros") {
+			} else if ("Rastros".equals(text.getName())) {
 				pedidoArtefatos[bons].setRastros(((Integer) text
 						.getSelectedItem()).intValue());
-			} else if (text.getName() == "Ajudas") {
+			} else if ("Ajudas".equals(text.getName())) {
 				pedidoArtefatos[bons].setAjudas(((Integer) text
 						.getSelectedItem()).intValue());
 			}
@@ -396,23 +396,23 @@ public class ScreenInspectArtefacts extends JDialog implements ActionListener {
 
 			text = ruim.next();
 
-			if (text.getName() == "Requisitos") {
+			if ("Requisitos".equals(text.getName())) {
 				pedidoArtefatos[ruins].setRequisitos(((Integer) text
 						.getSelectedItem()).intValue());
 
-			} else if (text.getName() == "Desenhos") {
+			} else if ("Desenhos".equals(text.getName())) {
 				pedidoArtefatos[ruins].setDesenhos(((Integer) text
 						.getSelectedItem()).intValue());
 
-			} else if (text.getName() == "Código") {
+			} else if ("Código".equals(text.getName())) {
 				pedidoArtefatos[ruins].setCodigos(((Integer) text
 						.getSelectedItem()).intValue());
 
-			} else if (text.getName() == "Rastros") {
+			} else if ("Rastros".equals(text.getName())) {
 				pedidoArtefatos[ruins].setRastros(((Integer) text
 						.getSelectedItem()).intValue());
 
-			} else if (text.getName() == "Ajudas") {
+			} else if ("Ajudas".equals(text.getName())) {
 				pedidoArtefatos[ruins].setAjudas(((Integer) text
 						.getSelectedItem()).intValue());
 

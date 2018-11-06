@@ -166,7 +166,7 @@ public class ScreenCreateProject extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand() == "OK") {
+		if ("OK".equals(e.getActionCommand())) {
 			getReturn();
 			ScreenCreateProject.this.dispose();
 		}

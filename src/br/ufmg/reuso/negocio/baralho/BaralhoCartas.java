@@ -29,7 +29,7 @@ import br.ufmg.reuso.negocio.carta.CartaPenalizacao;
 import br.ufmg.reuso.negocio.jogo.Jogo;
 import br.ufmg.reuso.negocio.jogo.ModeGameConstants;
 
-public class BaralhoCartas 
+public final class BaralhoCartas 
 {
 	private Carta[] baralho;
 	private int numeroTotalCartas;										// contem o número de cartas total do jogo 
@@ -52,17 +52,17 @@ public class BaralhoCartas
 			//#endif
 			int [] cartasProblema) {
 
-		if(facilidade==Jogo.FACIL)
-		{
+//		if(facilidade==Jogo.FACIL)
+//		{
+//
+//		}
+//
+//		if(facilidade==Jogo.MODERADO)
+//		{
+//
+//		}
 
-		}
-
-		if(facilidade==Jogo.MODERADO)
-		{
-
-		}
-
-		if(facilidade==Jogo.DIFICIL)
+		if(facilidade.equals(Jogo.DIFICIL))
 		{	
 			//#ifdef ConceptCard
 			CartaBonificacao [] cartaconceito;					//vetor que aloja cartas conceito do jogo

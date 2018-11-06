@@ -129,7 +129,7 @@ public class ScreenModo extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		
-		if (e.getActionCommand()== "OK" ){
+		if ("OK".equals(e.getActionCommand()) ){
 			ScreenModo.this.dispose();
 		}
 		else {		

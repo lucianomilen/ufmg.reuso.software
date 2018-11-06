@@ -113,13 +113,13 @@ public class ScreenCard extends JDialog {
 		ActionListener action = new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand() == "Usar") {
+				if ("Usar".equals(e.getActionCommand())) {
 					System.out.println("Usar");
 					actionReturn = USE;
-				} else if (e.getActionCommand() == "Descartar") {
+				} else if ("Descartar".equals(e.getActionCommand())) {
 					System.out.println("Descartar");
 					actionReturn = DISCARD;
-				} else if (e.getActionCommand() == "Voltar") {
+				} else if ("Voltar".equals(e.getActionCommand())) {
 					System.out.println("Voltar");
 					actionReturn = BACK;
 				}
