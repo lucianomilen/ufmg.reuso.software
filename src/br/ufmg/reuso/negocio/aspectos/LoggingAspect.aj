@@ -42,25 +42,36 @@ public aspect LoggingAspect {
 				"[AS] - Jogadores Criados!",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
-	
+
 	// ***** pointcut jogouDado ******************************************************** //
-	
+
 	pointcut jogouDado(Dado d) : call (* Dado.sortearValor() ) && target(d);
-	
+
 	after(Dado d) returning : jogouDado(d) {
 		JOptionPane.showMessageDialog( null,
 				"Resultado obtido no dado: " + d.sortearValor(),
 				"[AS] - Dado Jogado",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
-	
+
 	after(Dado d) throwing : jogouDado(d) {
 		JOptionPane.showMessageDialog( null,
 				"ERRO: Nenhum resultado obtido no dado!",
 				"[AS] - ERRO ao Jogar o Dado",
 				JOptionPane.ERROR_MESSAGE);
 	}
-	
+
+	// ***** pointcut tempoLimiteAtingido ******************************************************** //
+
+	pointcut tempoLimiteAtingidoJogada() : call (void ScreenTabuleiro.tempoLimiteAtingido() ) && target();
+
+	after() returning : tempoLimiteAtingidoJogada() {
+		JOptionPane.showMessageDialog( null,
+				"Jogador atingiu o tempo limite para sua jogada!",
+				"Tempo Limite",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
 	// ***** pointcut sorteouArtefato ************************************************** //
 	
 	pointcut sorteouArtefato(Artefato cArt) : call (void Artefato.mostrarArtefato() ) 
