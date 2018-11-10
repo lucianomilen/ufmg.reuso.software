@@ -306,7 +306,7 @@ public class ScreenTabuleiro extends JDialog {
 				}
 
 				if (tempoRestante <= 0) {
-					setVisible(false);
+					tempoLimiteAtingido();
 				}
 
 				paneTimer.setText(timeString);
@@ -334,6 +334,10 @@ public class ScreenTabuleiro extends JDialog {
 		jpanel.add(sliderPaneDesc, BorderLayout.CENTER);
 
 		return jpanel;
+	}
+
+	private void tempoLimiteAtingido() {
+		setVisible(false);
 	}
 
 	// =====================================================================================//
