@@ -12,12 +12,21 @@
 					</description>
 					<feature mandatory="true" name="ChooseLevel">
 						<description>
-							
+
 						</description>
 					</feature>
 					<feature mandatory="true" name="CreateProject">
 						<description>
 							
+						</description>
+					</feature>
+					<feature mandatory="false" name="UseTimer">
+						<description>
+							This will control the Timer feature in the game. If enabled,
+							players will have a maximum amount of time they can take for their turns.
+
+							If the player takes too long to finish their round, they will be notified
+							and their round will be forced to finish.
 						</description>
 					</feature>
 				</and>
@@ -47,7 +56,7 @@
 					</feature>
 					<feature mandatory="true" name="SeeOponentBoard">
 						<description>
-							
+
 						</description>
 					</feature>
 				</and>
